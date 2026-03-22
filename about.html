@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Error Pixels</title>
+  <meta name="description" content="Meet Mr. Error — the creative mind behind Error Pixels, Coimbatore's premium photography and videography studio.">
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .about-story {
+      padding: 100px 5%;
+    }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 80px; align-items: center; margin-bottom: 100px;
+    }
+    .about-grid.reverse { direction: rtl; }
+    .about-grid.reverse > * { direction: ltr; }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--purple-card);
+      border-radius: 16px;
+      border: 1px solid rgba(212,160,23,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      color: var(--gray);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+    .about-img-placeholder img {
+      width: 80px; opacity: 0.3;
+    }
+    .about-frame {
+      position: absolute;
+      border: 1px solid rgba(212,160,23,0.25);
+      border-radius: 16px;
+      top: 20px; left: 20px; right: -20px; bottom: -20px;
+      z-index: -1;
+    }
+    .about-quote {
+      background: rgba(212,160,23,0.08);
+      border-left: 3px solid var(--gold);
+      padding: 24px 28px;
+      border-radius: 0 8px 8px 0;
+      margin: 32px 0;
+    }
+    .about-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--off-white);
+    }
+    .about-quote cite {
+      display: block;
+      margin-top: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .values-section {
+      padding: 100px 5%;
+      background: var(--dark);
+    }
+    .values-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; margin-top: 60px;
+    }
+    .value-card {
+      background: var(--purple-card);
+      border: 1px solid rgba(212,160,23,0.1);
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .value-card:hover {
+      border-color: rgba(212,160,23,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .value-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(212,160,23,0.1);
+      border: 1px solid rgba(212,160,23,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--gold);
+      font-size: 1.6rem;
+    }
+    .value-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .value-card p { font-size: 0.83rem; color: var(--gray); line-height: 1.6; }
+
+    .gear-section {
+      padding: 80px 5%;
+    }
+    .gear-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 48px;
+    }
+    .gear-item {
+      background: var(--purple-card);
+      border: 1px solid rgba(212,160,23,0.08);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex; align-items: center; gap: 16px;
+      transition: var(--transition);
+    }
+    .gear-item:hover { border-color: rgba(212,160,23,0.25); }
+    .gear-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .gear-item span { font-size: 0.85rem; color: var(--off-white); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid.reverse { direction: ltr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .gear-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .gear-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo.png" alt="Error Pixels Logo">
+      <span class="nav-logo-text">ERROR PIXELS<span class="nav-logo-sub">Where Imperfection Becomes Art</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li class="nav-item">
+        <a href="portfolio.html">Portfolio ▾</a>
+        <div class="dropdown">
+          <a href="portfolio.html">All Work</a>
+          <a href="gallery.html?cat=wedding">Weddings</a>
+          <a href="gallery.html?cat=prewedding">Pre-Wedding</a>
+          <a href="gallery.html?cat=arangetram">Arangetram</a>
+          <a href="gallery.html?cat=modelling">Modelling</a>
+          <a href="gallery.html?cat=branding">Branding</a>
+        </div>
+      </li>
+      <li><a href="reels.html">Reels</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="reels.html">Reels</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="page-hero-grid"></div>
+    <canvas id="particles-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
+    <div class="page-hero-content">
+      <div class="section-label">Our Story</div>
+      <h1 class="section-title">About <span>Error Pixels</span></h1>
+      <p style="color:var(--gray);font-size:1rem;max-width:500px;line-height:1.7;">The creative minds behind Coimbatore's most distinctive visual storytelling studio.</p>
+    </div>
+  </div>
+
+  <!-- About Story -->
+  <section class="about-story">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <div class="about-img-placeholder">
+          <img src="../assets/logo.png" alt="Error Pixels">
+          <span>Your Photo Here</span>
+        </div>
+        <div class="about-frame"></div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">The Artist</div>
+        <h2 class="section-title">Meet <span>Mr. Error</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-body">
+          Every great story needs a passionate narrator. Mr. Error — the creative force behind Error Pixels — found his calling behind the lens, where the ordinary becomes extraordinary and imperfection tells the most honest stories.
+        </p>
+        <p class="section-body" style="margin-top:16px;">
+          Based in Coimbatore, Mr. Error has spent years honing the craft of visual storytelling across weddings, cultural events, fashion shoots, and brand campaigns. Each project is approached not just as a job, but as a creative collaboration — understanding your vision and bringing it to life with artistry.
+        </p>
+        <div class="about-quote" style="margin-top:28px;">
+          <p>"I don't just capture moments — I capture the feeling that lives inside them. That's what makes Error Pixels different."</p>
+          <cite>— Mr. Error, Founder</cite>
+        </div>
+        <a href="contact.html" class="btn-primary" style="margin-top:12px;">Work With Me</a>
+      </div>
+    </div>
+
+    <div class="about-grid reverse">
+      <div class="reveal-right">
+        <div class="section-label">The Philosophy</div>
+        <h2 class="section-title">Art in Every <span>Frame</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-body">
+          The name "Error Pixels" isn't a mistake — it's a statement. We believe the most beautiful images come from embracing the unexpected: the candid tear, the spontaneous laugh, the golden ray of light that wasn't planned.
+        </p>
+        <p class="section-body" style="margin-top:16px;">
+          Our approach blends cinematic technique with documentary honesty. We don't stage your memories — we elevate them. Every image is post-processed with care, preserving authenticity while delivering a premium, editorial-quality result.
+        </p>
+        <p class="section-body" style="margin-top:16px;">
+          From the grandest wedding venues to the most intimate family moments — we bring the same passion, professionalism, and artistic eye to every shoot.
+        </p>
+      </div>
+      <div class="about-img-wrap reveal-left">
+        <div class="about-img-placeholder">
+          <img src="../assets/logo.png" alt="Error Pixels">
+          <span>Behind the Scenes</span>
+        </div>
+        <div class="about-frame"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values-section">
+    <div style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">What Drives Us</div>
+      <h2 class="section-title">Our <span>Core Values</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">🎨</div>
+        <h3>Artistry</h3>
+        <p>Every frame is composed with an artist's eye — intentional, beautiful, and meaningful.</p>
+      </div>
+      <div class="value-card reveal" data-delay="100">
+        <div class="value-icon">❤️</div>
+        <h3>Passion</h3>
+        <p>We pour genuine emotion into every project, because your moments deserve nothing less.</p>
+      </div>
+      <div class="value-card reveal" data-delay="200">
+        <div class="value-icon">✨</div>
+        <h3>Authenticity</h3>
+        <p>Real moments, real emotions — enhanced by craft, never manufactured.</p>
+      </div>
+      <div class="value-card reveal" data-delay="300">
+        <div class="value-icon">🎯</div>
+        <h3>Precision</h3>
+        <p>From shooting to editing, every detail is handled with meticulous care and professionalism.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gear -->
+  <section class="gear-section">
+    <div class="section-label reveal">Professional Equipment</div>
+    <h2 class="section-title reveal">Our <span>Gear</span></h2>
+    <div class="gear-grid">
+      <div class="gear-item reveal"><div class="gear-dot"></div><span>Professional DSLR / Mirrorless Cameras</span></div>
+      <div class="gear-item reveal"><div class="gear-dot"></div><span>Prime & Zoom Lens Collection</span></div>
+      <div class="gear-item reveal"><div class="gear-dot"></div><span>Cinema-Grade Gimbal Stabilizers</span></div>
+      <div class="gear-item reveal"><div class="gear-dot"></div><span>Professional LED Lighting Rigs</span></div>
+      <div class="gear-item reveal"><div class="gear-dot"></div><span>Drone Aerial Photography</span></div>
+      <div class="gear-item reveal"><div class="gear-dot"></div><span>Adobe Creative Suite Editing</span></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding:80px 5%;text-align:center;background:var(--dark);">
+    <h2 class="section-title reveal">Ready to Create <span>Together?</span></h2>
+    <p style="color:var(--gray);margin-bottom:36px;" class="reveal">Let's make something beautiful. Reach out to discuss your vision.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="reveal">
+      <a href="contact.html" class="btn-primary">Get in Touch</a>
+      <a href="services.html" class="btn-outline">View Services</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../assets/logo.png" alt="Error Pixels">
+        <p>"Where imperfection becomes art — every frame tells a story worth telling."</p>
+        <div class="gold-divider" style="margin-top:20px;"></div>
+      </div>
+      <div class="footer-col"><h4>Pages</h4><ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="reels.html">Reels</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Services</h4><ul>
+        <li><a href="services.html">Wedding Photography</a></li>
+        <li><a href="services.html">Pre-Wedding Shoots</a></li>
+        <li><a href="services.html">Arangetram</a></li>
+        <li><a href="services.html">Modelling Shoot</a></li>
+        <li><a href="services.html">Branding Videos</a></li>
+        <li><a href="services.html">Reels & Editing</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4>
+        <a class="footer-contact-item" href="tel:+917010768895">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          +91 7010768895
+        </a>
+        <div class="footer-contact-item" style="cursor:default;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Vinayagar Kovil Street, Velandipalayam,<br>Coimbatore – 641025
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Error Pixels. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

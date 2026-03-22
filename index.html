@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error Pixels | Where Imperfection Becomes Art</title>
+  <meta name="description" content="Premium photography & videography studio in Coimbatore. Wedding, pre-wedding, arangetram, modelling, branding videos, reels and editing services.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Hero ── */
+    .hero-section {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at var(--mx,60%) var(--my,40%), rgba(212,160,23,0.12) 0%, transparent 55%),
+                  linear-gradient(180deg, #0D0520 0%, #1A0A2E 60%, #0D0520 100%);
+      transition: background 0.3s ease;
+    }
+    .hero-bg-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(212,160,23,0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(212,160,23,0.05) 1px, transparent 1px);
+      background-size: 80px 80px;
+      animation: fadeIn 2s ease;
+    }
+    .hero-lens {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,160,23,0.06) 0%, transparent 70%);
+      top: 50%; left: 60%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(212,160,23,0.15);
+      top: 50%; left: 60%;
+      transform: translate(-50%,-50%);
+      animation: rotateGold 30s linear infinite;
+    }
+    .hero-ring:nth-child(1) { width: 400px; height: 400px; }
+    .hero-ring:nth-child(2) { width: 550px; height: 550px; animation-direction: reverse; animation-duration: 45s; }
+    .hero-ring:nth-child(3) { width: 700px; height: 700px; animation-duration: 60s; border-style: dashed; }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 5%;
+      max-width: 760px;
+      margin-top: 80px;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(212,160,23,0.1);
+      border: 1px solid rgba(212,160,23,0.25);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      animation: fadeInUp 0.8s 0.2s both;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse-ring 1.5s ease-out infinite;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s 0.4s both;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-style: italic;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 42px;
+      max-width: 520px;
+      animation: fadeInUp 0.8s 0.6s both;
+    }
+    .hero-btns {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.8s both;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 5%;
+      display: flex; align-items: center; gap: 12px;
+      color: var(--gray); font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      z-index: 2;
+      animation: fadeIn 1s 1.5s both;
+    }
+    .hero-scroll-line {
+      width: 40px; height: 1px;
+      background: var(--gold);
+      animation: shimmer 2s linear infinite;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      background-size: 200% 100%;
+    }
+
+    /* ── Stats ── */
+    .stats-section {
+      padding: 80px 5%;
+      background: var(--dark);
+      border-top: 1px solid rgba(212,160,23,0.08);
+      border-bottom: 1px solid rgba(212,160,23,0.08);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px; text-align: center;
+    }
+    .stat-item { padding: 16px; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* ── Services Preview ── */
+    .services-preview {
+      padding: 100px 5%;
+    }
+    .services-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: end;
+      margin-bottom: 60px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--purple-card);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .service-card:first-child { border-radius: 12px 0 0 0; }
+    .service-card:nth-child(3) { border-radius: 0 12px 0 0; }
+    .service-card:nth-child(4) { border-radius: 0 0 0 12px; }
+    .service-card:last-child { border-radius: 0 0 12px 0; }
+    .service-card-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(212,160,23,0.05), rgba(45,27,78,0.8));
+      transition: var(--transition);
+    }
+    .service-card:hover .service-card-bg { opacity: 0.5; }
+    .service-icon {
+      position: absolute; top: 32px; left: 32px;
+      width: 56px; height: 56px;
+      border: 1px solid rgba(212,160,23,0.3);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      transition: var(--transition);
+      background: rgba(212,160,23,0.05);
+    }
+    .service-card:hover .service-icon {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+    .service-card-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px;
+      background: linear-gradient(0deg, rgba(13,5,32,0.95) 0%, transparent 100%);
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .service-card p {
+      font-size: 0.75rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .service-card-arrow {
+      position: absolute; top: 32px; right: 32px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(212,160,23,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: var(--transition);
+    }
+    .service-card:hover .service-card-arrow { opacity: 1; transform: translateX(0); }
+    .service-card:hover { transform: scale(1.015); z-index: 2; }
+
+    /* ── About Preview ── */
+    .about-preview {
+      padding: 100px 5%;
+      background: var(--dark);
+    }
+    .about-preview-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-camera {
+      width: 100%; max-width: 380px;
+      display: block; margin: 0 auto;
+      animation: float 5s ease-in-out infinite;
+      filter: drop-shadow(0 20px 60px rgba(212,160,23,0.3));
+    }
+    .about-badge {
+      position: absolute; bottom: -20px; right: 10%;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 16px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 8px 32px rgba(212,160,23,0.4);
+    }
+    .about-badge span {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+    }
+
+    /* ── Testimonials ── */
+    .testimonials {
+      padding: 100px 5%;
+      background: linear-gradient(180deg, var(--deep-purple) 0%, var(--dark) 100%);
+    }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 60px;
+    }
+    .testimonial-card {
+      background: var(--purple-card);
+      border: 1px solid rgba(212,160,23,0.1);
+      border-radius: 12px;
+      padding: 32px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute; top: 16px; right: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: rgba(212,160,23,0.1);
+      line-height: 1;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(212,160,23,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+    .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--off-white);
+      margin-bottom: 20px;
+    }
+    .testimonial-author {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .testimonial-event { font-size: 0.7rem; color: var(--gray); margin-top: 2px; }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      padding: 100px 5%;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(212,160,23,0.08) 0%, transparent 50%,rgba(212,160,23,0.05) 100%);
+      border-top: 1px solid rgba(212,160,23,0.1);
+      border-bottom: 1px solid rgba(212,160,23,0.1);
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: 'EP';
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-size: 20rem;
+      font-weight: 900;
+      color: rgba(212,160,23,0.03);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      letter-spacing: -0.05em;
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .cta-banner h2 em { color: var(--gold); font-style: italic; }
+    .cta-banner p {
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto; margin-right: auto;
+      position: relative;
+    }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-header { grid-template-columns: 1fr; }
+      .about-preview-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero-btns { flex-direction: column; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="Error Pixels Logo">
+      <span class="nav-logo-text">ERROR PIXELS<span class="nav-logo-sub">Where Imperfection Becomes Art</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/services.html">Services</a></li>
+      <li class="nav-item">
+        <a href="pages/portfolio.html">Portfolio ▾</a>
+        <div class="dropdown" id="portfolio-dropdown">
+          <a href="pages/portfolio.html">All Work</a>
+          <a href="pages/gallery.html?cat=wedding">Weddings</a>
+          <a href="pages/gallery.html?cat=prewedding">Pre-Wedding</a>
+          <a href="pages/gallery.html?cat=arangetram">Arangetram</a>
+          <a href="pages/gallery.html?cat=modelling">Modelling</a>
+          <a href="pages/gallery.html?cat=branding">Branding</a>
+        </div>
+      </li>
+      <li><a href="pages/reels.html">Reels</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="pages/about.html">About</a>
+    <a href="pages/services.html">Services</a>
+    <a href="pages/portfolio.html">Portfolio</a>
+    <a href="pages/reels.html">Reels</a>
+    <a href="pages/contact.html">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero-section" id="home">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-lens"></div>
+    <div class="hero-ring"></div>
+    <div class="hero-ring"></div>
+    <div class="hero-ring"></div>
+
+    <div class="hero-content">
+      <div class="hero-tag">
+        📸 Coimbatore's Premium Visual Studio
+      </div>
+      <h1 class="hero-title">
+        Every Frame.<br>
+        <em>A Masterpiece.</em>
+      </h1>
+      <p class="hero-subtitle">
+        Where imperfection becomes art — crafting timeless memories through the lens of passion, precision, and creativity.
+      </p>
+      <div class="hero-btns">
+        <a href="pages/services.html" class="btn-primary">
+          Explore Services
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="pages/contact.html" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span class="hero-scroll-line"></span>
+      Scroll to explore
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item reveal" data-delay="0">
+        <span class="stat-number" data-target="500" data-suffix="+">0+</span>
+        <span class="stat-label">Events Captured</span>
+      </div>
+      <div class="stat-item reveal" data-delay="100">
+        <span class="stat-number" data-target="200" data-suffix="+">0+</span>
+        <span class="stat-label">Weddings Covered</span>
+      </div>
+      <div class="stat-item reveal" data-delay="200">
+        <span class="stat-number" data-target="5" data-suffix="+">0+</span>
+        <span class="stat-label">Years of Experience</span>
+      </div>
+      <div class="stat-item reveal" data-delay="300">
+        <span class="stat-number" data-target="100" data-suffix="%">0%</span>
+        <span class="stat-label">Happy Clients</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="services-preview">
+    <div class="services-header">
+      <div>
+        <div class="section-label reveal">What We Do</div>
+        <h2 class="section-title reveal">Crafting Visual <span>Stories</span></h2>
+      </div>
+      <div>
+        <p class="section-body reveal">From intimate weddings to high-energy reels, we bring your vision to life with cinematic precision and artistic flair.</p>
+        <a href="pages/services.html" class="btn-outline reveal" style="margin-top:24px;display:inline-flex;">View All Services</a>
+      </div>
+    </div>
+    <div class="services-grid">
+      <a href="pages/services.html" class="service-card reveal">
+        <div class="service-card-bg"></div>
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="service-card-arrow">→</div>
+        <div class="service-card-content">
+          <h3>Wedding Photography</h3>
+          <p>Timeless moments from your special day, preserved forever.</p>
+        </div>
+      </a>
+      <a href="pages/services.html" class="service-card reveal" data-delay="80">
+        <div class="service-card-bg"></div>
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+        </div>
+        <div class="service-card-arrow">→</div>
+        <div class="service-card-content">
+          <h3>Pre-Wedding Shoot</h3>
+          <p>Romantic storytelling before the big day begins.</p>
+        </div>
+      </a>
+      <a href="pages/services.html" class="service-card reveal" data-delay="160">
+        <div class="service-card-bg"></div>
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <div class="service-card-arrow">→</div>
+        <div class="service-card-content">
+          <h3>Videography</h3>
+          <p>Cinematic films that bring emotions back to life.</p>
+        </div>
+      </a>
+      <a href="pages/services.html" class="service-card reveal" data-delay="0">
+        <div class="service-card-bg"></div>
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="service-card-arrow">→</div>
+        <div class="service-card-content">
+          <h3>Arangetram</h3>
+          <p>Capturing classical dance debuts with grace and grandeur.</p>
+        </div>
+      </a>
+      <a href="pages/services.html" class="service-card reveal" data-delay="80">
+        <div class="service-card-bg"></div>
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="service-card-arrow">→</div>
+        <div class="service-card-content">
+          <h3>Modelling & Branding</h3>
+          <p>Portfolio shoots and brand promotions that convert.</p>
+        </div>
+      </a>
+      <a href="pages/reels.html" class="service-card reveal" data-delay="160">
+        <div class="service-card-bg"></div>
+        <div class="service-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="service-card-arrow">→</div>
+        <div class="service-card-content">
+          <h3>Reels & Editing</h3>
+          <p>Trending reels and professional post-production editing.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="about-preview">
+    <div class="about-preview-grid">
+      <div class="about-visual reveal-left">
+        <img src="assets/logo.png" alt="Error Pixels Camera" class="about-camera">
+        <div class="about-badge">
+          <span>5+</span>
+          Years of Excellence
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">Behind the <span>Lens</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-body">
+          Error Pixels was born from a simple belief — that every imperfect moment holds a perfect story. Based in the heart of Coimbatore, we are passionate visual storytellers who specialize in capturing the emotions, colours, and connections that make life extraordinary.
+        </p>
+        <p class="section-body" style="margin-top:16px;">
+          From intimate wedding ceremonies to vibrant arangetrams, high-energy reels to timeless modelling shoots — we approach every project with the same dedication: your story, told beautifully.
+        </p>
+        <a href="pages/about.html" class="btn-primary" style="margin-top:36px;">Meet Mr. Error</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div class="section-label" style="justify-content:center;">Client Love</div>
+      <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The team at Error Pixels captured every single emotion of our wedding day flawlessly. Every photo tells a story. Truly magical work!"</p>
+        <div class="testimonial-author">Priya & Karthik</div>
+        <div class="testimonial-event">Wedding, Coimbatore</div>
+      </div>
+      <div class="testimonial-card reveal" data-delay="100">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Our arangetram coverage was beyond expectations. The video editing and photography truly honored the significance of the event."</p>
+        <div class="testimonial-author">Ananya's Family</div>
+        <div class="testimonial-event">Arangetram</div>
+      </div>
+      <div class="testimonial-card reveal" data-delay="200">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Professional, creative, and super easy to work with. Our brand reels got incredible engagement. Will work with them again for sure!"</p>
+        <div class="testimonial-author">Rithika M.</div>
+        <div class="testimonial-event">Brand Promotion Reels</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <h2 class="reveal">Ready to Create Something <em>Extraordinary?</em></h2>
+    <p class="reveal">Let's turn your moments into masterpieces. Reach out and let's talk about your story.</p>
+    <div class="cta-btns reveal">
+      <a href="https://wa.me/917010768895?text=Hi%20Error%20Pixels!%20I'd%20like%20to%20enquire%20about%20your%20photography%2Fvideography%20services." class="btn-primary" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us Now
+      </a>
+      <a href="pages/contact.html" class="btn-outline">Send Enquiry</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Error Pixels">
+        <p>"Where imperfection becomes art — every frame tells a story worth telling."</p>
+        <div class="gold-divider" style="margin-top:20px;"></div>
+        <div class="social-links" style="margin-top:16px;">
+          <a href="https://www.instagram.com/error_pixels" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/about.html">About Us</a></li>
+          <li><a href="pages/services.html">Services</a></li>
+          <li><a href="pages/portfolio.html">Portfolio</a></li>
+          <li><a href="pages/reels.html">Reels</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="pages/services.html">Wedding Photography</a></li>
+          <li><a href="pages/services.html">Pre-Wedding Shoots</a></li>
+          <li><a href="pages/services.html">Arangetram</a></li>
+          <li><a href="pages/services.html">Modelling Shoot</a></li>
+          <li><a href="pages/services.html">Branding Videos</a></li>
+          <li><a href="pages/services.html">Reels & Editing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a class="footer-contact-item" href="tel:+917010768895">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          +91 7010768895
+        </a>
+        <a class="footer-contact-item" href="https://wa.me/917010768895" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+        <div class="footer-contact-item" style="cursor:default;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Mr. Error, Vinayagar Kovil Street,<br>Velandipalayam, Coimbatore – 641025
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Error Pixels. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/error_pixels" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

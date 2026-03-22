@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Error Pixels</title>
+  <meta name="description" content="Explore Error Pixels portfolio — wedding photography, pre-wedding shoots, arangetram, modelling, branding videos and reels from Coimbatore.">
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .portfolio-section { padding: 80px 5%; }
+
+    /* Category Filter */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 48px;
+      justify-content: center;
+    }
+    .filter-btn {
+      padding: 10px 22px;
+      border-radius: 50px;
+      border: 1px solid rgba(212,160,23,0.25);
+      background: transparent;
+      color: var(--gray);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--gold);
+      color: var(--dark);
+      border-color: var(--gold);
+    }
+
+    /* Category Cards (subfolder pages) */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .category-card {
+      position: relative;
+      background: var(--purple-card);
+      border: 1px solid rgba(212,160,23,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: var(--transition);
+      aspect-ratio: 4/3;
+    }
+    .category-card:hover {
+      border-color: rgba(212,160,23,0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+    .category-card-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(212,160,23,0.06), rgba(13,5,32,0.6));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      transition: var(--transition);
+    }
+    .category-card:hover .category-card-bg { background: linear-gradient(135deg, rgba(212,160,23,0.12), rgba(13,5,32,0.4)); }
+    .category-card-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px;
+      background: linear-gradient(0deg, rgba(13,5,32,0.95) 0%, transparent 100%);
+    }
+    .category-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .category-card p { font-size: 0.75rem; color: var(--gray); }
+    .category-arrow {
+      position: absolute; top: 20px; right: 20px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(212,160,23,0.4);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-size: 1rem;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: var(--transition);
+    }
+    .category-card:hover .category-arrow { opacity: 1; transform: translateY(0); }
+
+    /* Drive Integration Info */
+    .drive-info {
+      background: var(--purple-card);
+      border: 1px solid rgba(212,160,23,0.15);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 60px;
+      display: flex; align-items: flex-start; gap: 20px;
+    }
+    .drive-info-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: rgba(212,160,23,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .drive-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--gold); margin-bottom: 6px; }
+    .drive-info p { font-size: 0.8rem; color: var(--gray); line-height: 1.6; }
+    .drive-info code {
+      display: inline-block;
+      background: rgba(212,160,23,0.08);
+      border: 1px solid rgba(212,160,23,0.15);
+      padding: 2px 8px; border-radius: 4px;
+      font-size: 0.75rem; color: var(--gold);
+      font-family: monospace; margin-top: 8px;
+    }
+
+    @media (max-width: 900px) { .categories-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .categories-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo.png" alt="Error Pixels Logo">
+      <span class="nav-logo-text">ERROR PIXELS<span class="nav-logo-sub">Where Imperfection Becomes Art</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li class="nav-item"><a href="portfolio.html" class="active">Portfolio ▾</a>
+        <div class="dropdown">
+          <a href="gallery.html?cat=wedding">Weddings</a>
+          <a href="gallery.html?cat=prewedding">Pre-Wedding</a>
+          <a href="gallery.html?cat=arangetram">Arangetram</a>
+          <a href="gallery.html?cat=modelling">Modelling</a>
+          <a href="gallery.html?cat=branding">Branding</a>
+        </div>
+      </li>
+      <li><a href="reels.html">Reels</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="../index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a><a href="reels.html">Reels</a><a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-grid"></div>
+    <canvas id="particles-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
+    <div class="page-hero-content">
+      <div class="section-label">Our Work</div>
+      <h1 class="section-title">Portfolio & <span>Gallery</span></h1>
+      <p style="color:var(--gray);font-size:1rem;max-width:500px;line-height:1.7;">Browse our work across weddings, arangetrams, modelling shoots, brand films, and more.</p>
+    </div>
+  </div>
+
+  <section class="portfolio-section">
+
+    <!-- Drive Integration Note (visible to admin, can be hidden) -->
+    <div class="drive-info reveal">
+      <div class="drive-info-icon">📁</div>
+      <div>
+        <h4>Google Drive Gallery — How to Add Your Work</h4>
+        <p>Each category below links to a gallery page (<code>gallery.html?cat=wedding</code>). To display photos/videos from Google Drive, open <code>js/drive-config.js</code> and add your Google Drive folder IDs for each category. The gallery will automatically load and display your content.</p>
+        <code>js/drive-config.js → DRIVE_FOLDERS = { wedding: "YOUR_FOLDER_ID", ... }</code>
+      </div>
+    </div>
+
+    <!-- Category Cards -->
+    <div class="categories-grid">
+      <a href="gallery.html?cat=wedding" class="category-card reveal">
+        <div class="category-card-bg">💍</div>
+        <div class="category-arrow">→</div>
+        <div class="category-card-overlay">
+          <h3>Weddings</h3>
+          <p>Photography & Videography</p>
+        </div>
+      </a>
+      <a href="gallery.html?cat=prewedding" class="category-card reveal" data-delay="80">
+        <div class="category-card-bg">🌅</div>
+        <div class="category-arrow">→</div>
+        <div class="category-card-overlay">
+          <h3>Pre-Wedding</h3>
+          <p>Romantic Story Sessions</p>
+        </div>
+      </a>
+      <a href="gallery.html?cat=arangetram" class="category-card reveal" data-delay="160">
+        <div class="category-card-bg">🎭</div>
+        <div class="category-arrow">→</div>
+        <div class="category-card-overlay">
+          <h3>Arangetram</h3>
+          <p>Classical Arts Documentation</p>
+        </div>
+      </a>
+      <a href="gallery.html?cat=modelling" class="category-card reveal" data-delay="0">
+        <div class="category-card-bg">✨</div>
+        <div class="category-arrow">→</div>
+        <div class="category-card-overlay">
+          <h3>Modelling Shoots</h3>
+          <p>Fashion & Portfolio</p>
+        </div>
+      </a>
+      <a href="gallery.html?cat=branding" class="category-card reveal" data-delay="80">
+        <div class="category-card-bg">🎬</div>
+        <div class="category-arrow">→</div>
+        <div class="category-card-overlay">
+          <h3>Branding & Promotion</h3>
+          <p>Brand Films & Videos</p>
+        </div>
+      </a>
+      <a href="reels.html" class="category-card reveal" data-delay="160">
+        <div class="category-card-bg">📱</div>
+        <div class="category-arrow">→</div>
+        <div class="category-card-overlay">
+          <h3>Reels</h3>
+          <p>Short Form Content</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;padding:40px 0;">
+      <h2 class="section-title reveal">Like What You <span>See?</span></h2>
+      <p style="color:var(--gray);margin-bottom:32px;" class="reveal">Let's create something beautiful together. Reach out to discuss your project.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="reveal">
+        <a href="contact.html" class="btn-primary">Book a Shoot</a>
+        <a href="https://wa.me/917010768895" class="btn-outline" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><img src="../assets/logo.png" alt="Error Pixels"><p>"Where imperfection becomes art — every frame tells a story worth telling."</p></div>
+      <div class="footer-col"><h4>Pages</h4><ul><li><a href="../index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="reels.html">Reels</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Wedding Photography</a></li><li><a href="services.html">Pre-Wedding</a></li><li><a href="services.html">Arangetram</a></li><li><a href="services.html">Modelling Shoot</a></li><li><a href="services.html">Branding Videos</a></li><li><a href="services.html">Reels & Editing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4>
+        <a class="footer-contact-item" href="tel:+917010768895"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>+91 7010768895</a>
+        <div class="footer-contact-item" style="cursor:default;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Vinayagar Kovil Street, Velandipalayam, Coimbatore – 641025</div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© <span id="year"></span> Error Pixels. All rights reserved.</p></div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
